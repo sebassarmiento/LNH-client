@@ -1,0 +1,144 @@
+import React, { Component } from 'react';
+import '../css/newpost.css';
+import Moment from 'moment';
+import 'moment/locale/es';
+
+class NewPost extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            titulo: '',
+            texto: '',
+            categoria: 'Vinos',
+            imagen: ''
+        }
+        this.imageFile = React.createRef()
+    }
+
+    addFile(event) {
+        let formData = new FormData();
+        formData.append("file", this.state.imagen);
+        //formData.append('name', 'some value user types');
+        //formData.append('description', 'some value user types');
+        console.log(formData);
+
+        /*fetch(`http://.../gallery/${path}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'multipart/form-data' },
+            body: { event.target.files[0] }
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                this.setState({ images: data.images, isLoading: false });
+                this.props.updateImages(data.images);
+            })
+            .catch(error => this.setState({ error, isLoading: false }));*/
+    }
+
+    handlePost() {
+        if (this.state.imagen && this.state.titulo.length > 1 && this.state.texto.length > 1) {
+            let formData = new FormData();
+            formData.append("imagen", this.imageFile.current.files[0]);
+            formData.append("username", this.props.username)
+            formData.append("password", this.props.password)
+            formData.append("titulo", this.state.titulo)
+            formData.append("categoria", this.state.categoria)
+            formData.append("texto", this.state.texto)
+            formData.append("fecha", Moment().locale('es').format('LL'))
+            console.log(this.state.imagen);
+            fetch('http://localhost:3000/notas', {
+                method: 'POST',
+                body: formData
+            })
+                .then(d => d.json())
+                .then(res => {
+                    console.log(res)
+                    if (res.message === 'Nota agregada con exito') {
+                        this.setState({ successNota: true, titulo: '', texto: '', imagen: '' })
+                        setTimeout(() => {
+                            this.setState({ successNota: false })
+                        }, 5000)
+                    } else {
+                        this.setState({ failedNota: true })
+                        setTimeout(() => {
+                            this.setState({ failedNota: false })
+                        }, 5000)
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (this.state.titulo.length > 1 && this.state.texto.length > 1) {
+            fetch('http://localhost:3000/notas', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: this.props.username,
+                    password: this.props.password,
+                    titulo: this.state.titulo,
+                    texto: this.state.texto,
+                    categoria: this.state.categoria,
+                    fecha: Moment().locale('es').format('LL')
+                })
+            })
+                .then(d => d.json())
+                .then(res => {
+                    console.log(res)
+                    if (res.message === 'Nota agregada con exito') {
+                        this.setState({ successNota: true, titulo: '', texto: '' })
+                        setTimeout(() => {
+                            this.setState({ successNota: false })
+                        }, 5000)
+                    } else {
+                        this.setState({ failedNota: true })
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+    }
+
+    handleChange(e) {
+        console.log(this.imageFile.current.files[0])
+        this.setState({ [e.target.name]: e.target.value })
+    }
+
+    render() {
+        console.log(this.state)
+        return (
+            <div className="new-post-container" >
+                <h1>Agregar una nueva nota</h1>
+                <div className="new-post-flex" >
+                    <h3>Titulo:</h3>
+                    <input onChange={(e) => this.handleChange(e)} name="titulo" value={this.state.titulo} placeholder="Titulo" type="text" />
+                </div>
+                <div className="new-post-flex" >
+                    <h3>Texto:</h3>
+                    <textarea onChange={(e) => this.handleChange(e)} name="texto" value={this.state.texto} placeholder="Texto" ></textarea>
+                </div>
+                <div className="new-post-flex" >
+                    <h3>Imagen:</h3>
+                    <input ref={this.imageFile} value={this.state.imagen} name="imagen" onChange={(e) => this.handleChange(e)} type="file" />
+                </div>
+                <div className="new-post-flex" >
+                    <h3>Categoria:</h3>
+                    <select name="categoria" onChange={(e) => this.handleChange(e)} value={this.state.categoria} >
+                        <option>Vinos</option>
+                        <option>Gastronomia</option>
+                        <option>Cultura</option>
+                        <option>Otro</option>
+                    </select>
+                </div>
+                <button onClick={() => this.handlePost()} className="new-post-btn" >Postear</button>
+                {this.state.successNota ? <h1 className="new-post-success" >Nota posteada con exito!</h1> : null}
+                {this.state.failedNota ? <h1 className="new-post-failure" >Ups! Error al postear</h1> : null}
+            </div>
+        )
+    }
+}
+
+export default NewPost;

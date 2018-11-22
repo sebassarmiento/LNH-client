@@ -1,0 +1,33 @@
+.nota-individual{
+    width: 60%;
+    margin: 12px;
+    padding: 12px;
+    margin: 24px auto;
+}
+
+.nota-individual-data{
+    animation: showNotaIndividual 1s ease-in;
+}
+
+@keyframes showNotaIndividual{
+    from{opacity: 0;}
+    to{opacity: 1;}
+}
+
+.nota-individual h1{
+    color: white;
+}
+
+.nota-individual-volver-btn{
+    background-color: transparent;
+    font-size: 1em;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.473);
+    transition: all 0.2s;
+    border: none;
+}
+
+.nota-individual-volver-btn:hover{
+    color: rgba(255, 255, 255, 0.829);
+    cursor: pointer;
+}

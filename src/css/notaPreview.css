@@ -1,0 +1,53 @@
+.nota{
+    border: none;
+    border-radius: 4px;
+    margin: 12px;
+    padding: 12px;
+    transition: all 0.6s;
+    animation: showNota 0.8s;
+    max-width: 400px;
+}
+
+@keyframes showNota{
+    0%{transform: translateY(150px)}
+    100%{transform: translateY(0)}
+}
+
+.nota h6{
+    margin: 6px 0px;
+}
+
+.nota p{
+    overflow: hidden;
+    height: 45%;
+}
+
+.nota-titulo{
+    color: white;
+    margin: 6px 0px;
+    word-break: break-word;
+    max-height: 25%;
+    overflow: hidden;
+}
+
+.nota-categoria{
+    padding: 4px 8px;
+    background-color: rgba(165, 42, 42, 0.712);
+    border: none;
+    border-radius: 4px;
+    display: inline;
+}
+
+.nota:hover{
+    background-color: rgba(255, 255, 255, 0.171);
+    cursor: pointer;
+}
+
+.nota-hidden{
+    border: none;
+    border-radius: 4px;
+    margin: 12px;
+    padding: 12px;
+    transition: all 0.6s;
+    visibility: hidden;
+}

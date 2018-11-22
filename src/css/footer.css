@@ -1,0 +1,28 @@
+.footer{
+    margin: 12px 0px;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-size: 1em;
+    bottom: 0%;
+}
+
+.footer i{
+    font-size: 2em;
+    color: rgba(255, 255, 255, 0.575);
+    margin: 24px;
+}
+
+.footer span{
+    color: blueviolet;
+}
+
+.login-link{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.575);
+    font-size: 12px;
+    text-decoration: none;
+}

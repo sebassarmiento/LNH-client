@@ -9,7 +9,7 @@ class Navbar extends Component {
                 <h4 className="navbar-brand" >LE NOUVEL HEDONISME</h4>
                 <div className="navbar-menu" >
                     <NavLink to="/" >Nuevo</NavLink>
-                    <NavLink to="/notas" >Notas</NavLink>
+                    <NavLink to="/notas/gastronomia" >Notas</NavLink>
                     <NavLink to="/contacto" >Contacto</NavLink>
                 </div>
             </div>

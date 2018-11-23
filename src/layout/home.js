@@ -11,6 +11,7 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    sessionStorage.setItem('location', this.props.location.pathname)
     fetch('http://localhost:3000/notas')
       .then(d => d.json())
       .then(res => {

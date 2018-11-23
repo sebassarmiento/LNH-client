@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loader from '../utils/loader';
 import '../css/notaIndividual.css';
 import { browserHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Nota extends Component {
   constructor(props){
@@ -23,14 +24,14 @@ class Nota extends Component {
   }
 
   handleBack(){
-    console.log(this.props.history)
-    this.props.history.goBack()
+    let path = sessionStorage.getItem('location')
+    this.setState({redirect: path ? path : '/'})
   }
 
   render() {
     return (
     <div className="nota-individual" >
-    <button className="nota-individual-volver-btn" onClick={() => this.handleBack()} ><i class="fas fa-arrow-left"></i> Volver</button>
+    <button className="nota-individual-volver-btn" onClick={() => this.handleBack()} ><i className="fas fa-arrow-left"></i> Volver</button>
       {this.state.data ? 
       <div className="nota-individual-data">
       <h1>{this.state.data.titulo}</h1>
@@ -41,6 +42,7 @@ class Nota extends Component {
       </div>
     : <Loader />
     }
+    {this.state.redirect ? <Redirect to={this.state.redirect} /> : null}
     </div>
     )
   }

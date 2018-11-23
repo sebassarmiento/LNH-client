@@ -18,14 +18,16 @@
 }
 
 .nota p{
+    height: 7em;
     overflow: hidden;
-    height: 45%;
+    line-height: 1em;
 }
 
 .nota-titulo{
     color: white;
     margin: 6px 0px;
     word-break: break-word;
+    height: 25%;
     max-height: 25%;
     overflow: hidden;
 }

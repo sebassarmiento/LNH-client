@@ -53,7 +53,7 @@ class Notas extends Component {
           <Link name="turismo" onClick={e => this.handleClick(e)} to="../notas/turismo" >Turismo</Link>
           <Link name="cultura" onClick={e => this.handleClick(e)} to="../notas/cultura" >Cultura</Link>
           <Link name="vinos" onClick={e => this.handleClick(e)} to="../notas/vinos" >Vinos</Link>
-          <Link name="otros" onClick={e => this.handleClick(e)} to="../notas/otros" >Otros</Link>
+          <Link name="otro" onClick={e => this.handleClick(e)} to="../notas/otro" >Otros</Link>
         </div>
         <div className="notas-container-notas" >
           {

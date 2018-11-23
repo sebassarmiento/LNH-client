@@ -14,6 +14,10 @@
     to{opacity: 1;}
 }
 
+.nota-individual-data img{
+    max-width: 100%;
+}
+
 .nota-individual h1{
     color: white;
 }

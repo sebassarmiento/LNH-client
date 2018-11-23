@@ -1,0 +1,28 @@
+.notas-container{
+    padding: 24px;
+    margin: 12px;
+    display: flex;
+}
+
+.notas-categoria-columna{
+    flex: 1;
+}
+
+.notas-categoria-columna h3:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.notas-container .nota{
+    max-height: 280px;
+    min-width: 300px;
+}
+
+.notas-container-notas{
+    flex: 5;
+    margin: 12px;
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: 300px;
+}

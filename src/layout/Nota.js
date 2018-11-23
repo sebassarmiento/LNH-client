@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Loader from '../utils/loader';
 import '../css/notaIndividual.css';
-import { Redirect } from 'react-router-dom'
+import { browserHistory } from 'react-router-dom';
 
 class Nota extends Component {
   constructor(props){
@@ -23,7 +23,8 @@ class Nota extends Component {
   }
 
   handleBack(){
-    this.setState({redirectBack: true})
+    console.log(this.props.history)
+    this.props.history.goBack()
   }
 
   render() {
@@ -40,7 +41,6 @@ class Nota extends Component {
       </div>
     : <Loader />
     }
-    {this.state.redirectBack ? <Redirect to="/" /> : null}
     </div>
     )
   }

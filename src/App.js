@@ -11,12 +11,12 @@ import Login from './components/login';
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter >
         <div>
           <Navbar />
           <Route path="/" exact component={Home} />
           <Route path="/notas" exact component={Notas} />
-          <Route path="/notas/:notaId" component={Nota} />
+          <Route path="/notas/id/:notaId" component={Nota} />
           <Route path="/contacto" component={Contacto} />
           <Route path="/mapa" component={Login} />
           <Footer />

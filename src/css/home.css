@@ -46,11 +46,32 @@
 
 @media (max-width: 700px){
     .home-notas-container{
-        margin: 12px;
-        padding: 12px;
+        margin: 0px;
+        padding: 0px;
         display: grid;
         grid-template-columns: 1fr;
         grid-auto-rows: 300px;
+    }
+
+    .home-presentation{
+        width: 100%;
+        height: 100vh;
+        background: url('../img/chica.png') no-repeat;
+        background-size: 100%;
+    }
+
+    .home-presentation-text{
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        width: 100%;
+        padding: 12px;
+        text-align: center;
+    }
+
+    .home-reciente{
+        padding: 12px;
     }
 }
 

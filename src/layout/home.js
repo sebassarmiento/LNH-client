@@ -27,11 +27,11 @@ class Home extends Component {
     return (
       <div className="home-container" >
         <div className="home-presentation" >
-          <div className="home-presentation-text" >
+        </div>
+        <div className="home-presentation-text" >
             <h2>REVISTA DIGITAL DE SEXO, DINERO, VIEJOS, CHINITAS Y MUCHOS AMORES.</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, temporibus ipsum sapiente impedit fugit nostrum labore enim inventore quidem dolorum ex? Optio repellat nemo quod tempore tenetur soluta dicta autem.</p>
           </div>
-        </div>
         <h1 className="home-reciente" >RECIENTE</h1>
         <div className="home-notas-container" >
           {

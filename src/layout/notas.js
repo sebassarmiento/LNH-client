@@ -8,7 +8,7 @@ class Notas extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      url: 'gastronomia'
+      gastronomia: 'current-categoria'
     }
     this.getData = this.getData.bind(this)
   }
@@ -38,7 +38,9 @@ class Notas extends Component {
       gastronomia: false,
       vinos: false,
       cultura: false,
-      [name]: true
+      turismo: false,
+      otro: false,
+      [name]: 'current-categoria'
     })
     sessionStorage.setItem('location', `/notas/${[name]}`)
     this.getData(`/notas/${[name]}`)
@@ -48,12 +50,12 @@ class Notas extends Component {
     return (
       <div className="notas-container">
         <div className="notas-categoria-columna" >
-          <h1>Categorias:</h1>
-          <Link name="gastronomia" onClick={e => this.handleClick(e)} to="../notas/gastronomia" >Gastronomia</Link>
-          <Link name="turismo" onClick={e => this.handleClick(e)} to="../notas/turismo" >Turismo</Link>
-          <Link name="cultura" onClick={e => this.handleClick(e)} to="../notas/cultura" >Cultura</Link>
-          <Link name="vinos" onClick={e => this.handleClick(e)} to="../notas/vinos" >Vinos</Link>
-          <Link name="otro" onClick={e => this.handleClick(e)} to="../notas/otro" >Otros</Link>
+          <h3>Categorias:</h3>
+          <Link className={this.state.gastronomia} name="gastronomia" onClick={e => this.handleClick(e)} to="../notas/gastronomia" >Gastronomia</Link>
+          <Link className={this.state.turismo} name="turismo" onClick={e => this.handleClick(e)} to="../notas/turismo" >Turismo</Link>
+          <Link className={this.state.cultura} name="cultura" onClick={e => this.handleClick(e)} to="../notas/cultura" >Cultura</Link>
+          <Link className={this.state.vinos} name="vinos" onClick={e => this.handleClick(e)} to="../notas/vinos" >Vinos</Link>
+          <Link className={this.state.otro} name="otro" onClick={e => this.handleClick(e)} to="../notas/otro" >Otros</Link>
         </div>
         <div className="notas-container-notas" >
           {

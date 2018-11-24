@@ -82,12 +82,15 @@
 
     .mobile-menu a{
         display: block;
+        width: 30%;
         color: black;
         text-decoration: none;
-        margin: 12px;
+        margin: 6px;
+        padding: 6px 0px;
         font-size: 1em;
         font-weight: 100;
         animation: showMenuTags 1s;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.13);
     }
 
     @keyframes showMenuTags {

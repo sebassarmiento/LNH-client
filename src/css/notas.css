@@ -38,3 +38,51 @@
 .current-categoria{
     color: white !important;
 }
+
+@media (max-width: 700px){
+    .notas-container{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    .notas-categoria-columna{
+        width: 100%;
+        text-align: center;
+    }
+
+    .notas-categoria-columna h3{
+        padding: 12px;
+        margin: 0;
+    }
+
+    .notas-categoria-columna i{
+        font-size: 0.8em;
+    }
+
+    .notas-categoria-columna .notas-categorias{
+        display: none;
+    }
+
+    .notas-categorias-mobile{
+        padding: 0px 24px;
+        display: block;
+        animation: showCategoriasMobile 1s;
+    }
+
+    @keyframes showCategoriasMobile {
+        0%{transform: translateX(-100%)}
+        100%{transform: translateX(0%)}
+    }
+
+    .notas-container-notas{
+        margin: 0px;
+        padding: 12px;
+        display: block;
+    }   
+    
+    .notas-container-notas .nota{
+        margin: 12px 0px;
+        padding: 12px 0px;
+    }
+}

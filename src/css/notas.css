@@ -61,6 +61,7 @@
     }
 
     .notas-categoria-columna i{
+        display: inline;
         font-size: 0.8em;
     }
 
@@ -75,8 +76,8 @@
     }
 
     @keyframes showCategoriasMobile {
-        0%{transform: translateX(-100%)}
-        100%{transform: translateX(0%)}
+        0%{transform: translateX(-100%); height: 0px;}
+        100%{transform: translateX(0%); height: 154px;}
     }
 
     .notas-container-notas{

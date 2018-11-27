@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../css/newpost.css';
 import Moment from 'moment';
 import 'moment/locale/es';
+import Loader2 from '../utils/loader2';
 
 class NewPost extends Component {
     constructor(props) {
@@ -15,28 +16,10 @@ class NewPost extends Component {
         this.imageFile = React.createRef()
     }
 
-    addFile(event) {
-        let formData = new FormData();
-        formData.append("file", this.state.imagen);
-        //formData.append('name', 'some value user types');
-        //formData.append('description', 'some value user types');
-        console.log(formData);
-
-        /*fetch(`http://.../gallery/${path}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'multipart/form-data' },
-            body: { event.target.files[0] }
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                this.setState({ images: data.images, isLoading: false });
-                this.props.updateImages(data.images);
-            })
-            .catch(error => this.setState({ error, isLoading: false }));*/
-    }
-
     handlePost() {
+        this.setState({invalidData: false})
         if (this.state.imagen && this.state.titulo.length > 1 && this.state.texto.length > 1) {
+            this.setState({pendingPost: true})
             let formData = new FormData();
             formData.append("imagen", this.imageFile.current.files[0]);
             formData.append("username", this.props.username)
@@ -45,14 +28,13 @@ class NewPost extends Component {
             formData.append("categoria", this.state.categoria)
             formData.append("texto", this.state.texto)
             formData.append("fecha", Moment().locale('es').format('LL'))
-            console.log(this.state.imagen);
             fetch('http://localhost:3000/notas', {
                 method: 'POST',
                 body: formData
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log(res)
+                    this.setState({pendingPost: false})
                     if (res.message === 'Nota agregada con exito') {
                         this.setState({ successNota: true, titulo: '', texto: '', imagen: '' })
                         setTimeout(() => {
@@ -70,6 +52,7 @@ class NewPost extends Component {
                 })
         }
         else if (this.state.titulo.length > 1 && this.state.texto.length > 1) {
+            this.setState({pendingPost: true})
             fetch('http://localhost:3000/notas', {
                 method: 'POST',
                 headers: {
@@ -86,7 +69,7 @@ class NewPost extends Component {
             })
                 .then(d => d.json())
                 .then(res => {
-                    console.log(res)
+                    this.setState({pendingPost: false})
                     if (res.message === 'Nota agregada con exito') {
                         this.setState({ successNota: true, titulo: '', texto: '' })
                         setTimeout(() => {
@@ -99,6 +82,8 @@ class NewPost extends Component {
                 .catch(err => {
                     console.log(err)
                 })
+        } else {
+            this.setState({invalidData: true})
         }
     }
 
@@ -108,7 +93,6 @@ class NewPost extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div className="new-post-container" >
                 <h1>Agregar una nueva nota</h1>
@@ -122,7 +106,7 @@ class NewPost extends Component {
                 </div>
                 <div className="new-post-flex" >
                     <h3>Imagen:</h3>
-                    <input ref={this.imageFile} value={this.state.imagen} name="imagen" onChange={(e) => this.handleChange(e)} type="file" />
+                    <input accept="image/*" ref={this.imageFile} value={this.state.imagen} name="imagen" onChange={(e) => this.handleChange(e)} type="file" />
                 </div>
                 <div className="new-post-flex" >
                     <h3>Categoria:</h3>
@@ -133,7 +117,9 @@ class NewPost extends Component {
                         <option>Otro</option>
                     </select>
                 </div>
+                {this.state.pendingPost ? <Loader2 /> : <Loader2 hide={true} />}
                 <button onClick={() => this.handlePost()} className="new-post-btn" >Postear</button>
+                {this.state.invalidData ? <p>Porfavor completa los campos</p> : null}
                 {this.state.successNota ? <h1 className="new-post-success" >Nota posteada con exito!</h1> : null}
                 {this.state.failedNota ? <h1 className="new-post-failure" >Ups! Error al postear</h1> : null}
             </div>

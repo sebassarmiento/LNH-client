@@ -38,6 +38,10 @@
 
   /* LOADER 2 */
 
+  .hidden{
+    visibility: hidden !important;
+  }
+
   .lds-ellipsis {
     display: block;
     position: relative;

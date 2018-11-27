@@ -20,7 +20,7 @@ class Notas extends Component {
   }
 
   getData(url) {
-    this.setState({ loadingData: true })
+    this.setState({ loadingData: true, data: false })
     console.log(url)
     fetch(`http://localhost:3000${url}`)
       .then(d => d.json())

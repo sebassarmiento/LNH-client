@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Loader from '../utils/loader';
 import '../css/notaIndividual.css';
-import { browserHistory } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 class Nota extends Component {
@@ -12,7 +11,7 @@ class Nota extends Component {
 
   componentDidMount(){
     console.log(this.props.location)
-    fetch(`http://localhost:3000${this.props.location.pathname}`)
+    fetch(`https://lnhbackend.herokuapp.com${this.props.location.pathname}`)
     .then(d => d.json())
     .then(res => {
       console.log(res)

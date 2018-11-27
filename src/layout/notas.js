@@ -22,7 +22,7 @@ class Notas extends Component {
   getData(url) {
     this.setState({ loadingData: true, data: false })
     console.log(url)
-    fetch(`http://localhost:3000${url}`)
+    fetch(`https://lnhbackend.herokuapp.com${url}`)
       .then(d => d.json())
       .then(res => {
         console.log(res)
@@ -62,7 +62,7 @@ class Notas extends Component {
         </div>
         <div className="notas-container-notas" >
           {
-            this.state.data ? this.state.data.map(nota =>
+            this.state.data && this.state.data.constructor === Array ? this.state.data.map(nota =>
               <Nota _id={nota._id}
                 categoria={nota.categoria}
                 key={nota._id}

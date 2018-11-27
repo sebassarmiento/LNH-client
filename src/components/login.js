@@ -16,7 +16,7 @@ class Login extends Component {
             this.setState({invalidData: false})
         }
         if(this.state.username.length > 1 && this.state.password.length > 1){
-            fetch('http://localhost:3000/login', {
+            fetch('https://lnhbackend.herokuapp.com/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

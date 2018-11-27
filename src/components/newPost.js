@@ -28,7 +28,7 @@ class NewPost extends Component {
             formData.append("categoria", this.state.categoria)
             formData.append("texto", this.state.texto)
             formData.append("fecha", Moment().locale('es').format('LL'))
-            fetch('http://localhost:3000/notas', {
+            fetch('https://lnhbackend.herokuapp.com/notas', {
                 method: 'POST',
                 body: formData
             })
@@ -53,7 +53,7 @@ class NewPost extends Component {
         }
         else if (this.state.titulo.length > 1 && this.state.texto.length > 1) {
             this.setState({pendingPost: true})
-            fetch('http://localhost:3000/notas', {
+            fetch('https://lnhbackend.herokuapp.com/notas', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -12,7 +12,7 @@ class Navbar extends Component {
         return (
             <div className="navbar" >
                 <h4 className="navbar-brand" >LE NOUVEL HEDONISME</h4>
-                <i onClick={() => this.setState({mobileMenu: true})} class="fas fa-bars navbar-hamburger"></i>
+                <i onClick={() => this.setState({mobileMenu: true})} className="fas fa-bars navbar-hamburger"></i>
                 <div className="navbar-menu" >
                     <NavLink to="/" >Nuevo</NavLink>
                     <NavLink to="/notas/gastronomia" >Notas</NavLink>

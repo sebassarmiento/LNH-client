@@ -55,6 +55,7 @@
         margin: 0;
         height: 100vh;
         position: fixed;
+        z-index: 1000;
         top: 0%;
         left: 0%;
         background-color: rgba(44, 44, 44, 0.493);
@@ -72,12 +73,12 @@
     }
 
     .mobile-menu{
-        z-index: 10000000;
+        z-index: 1001;
         width: 75%;
-        background-color: rgba(233, 233, 233, 0.89);
+        background-color: rgba(233, 233, 233, 0.911);
         height: 100%;
         padding: 12px;
-        animation: showMobileMenu 1s;
+        animation: showMobileMenu 0.8s;
     }
 
     .mobile-menu a{
@@ -94,7 +95,7 @@
     }
 
     @keyframes showMenuTags {
-        0%{transform: translateX(-100%); opacity: 0;}
+        30%{transform: translateX(-200%); opacity: 0;}
         100%{transform: translateX(0%); opacity: 1;}
     }
 
@@ -103,11 +104,11 @@
     }
 
     .mobile-menu a:nth-child(3){
-        animation-duration: 1.2s;
+        animation-duration: 1s;
     }
 
     .mobile-menu a:nth-child(4){
-        animation-duration: 1.6s;
+        animation-duration: 1.2s;
     }
 }
 

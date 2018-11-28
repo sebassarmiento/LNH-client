@@ -53,3 +53,10 @@
     transition: all 0.6s;
     visibility: hidden;
 }
+
+@media (max-width: 700px){
+    .nota{
+        max-width: 100%;
+        padding: 12px;
+    }
+}

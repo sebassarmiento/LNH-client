@@ -20,13 +20,13 @@ class Notas extends Component {
   }
 
   getData(url) {
-    this.setState({ loadingData: true, data: false })
+    this.setState({ loadingData: true, data: false, none: false })
     console.log(url)
     fetch(`https://lnhbackend.herokuapp.com${url}`)
       .then(d => d.json())
       .then(res => {
         console.log(res)
-        this.setState({ data: res, loadingData: false })
+        this.setState({ data: res, loadingData: false, none: (res.constructor === Array && res.length === 0 ? true : false ) })
       })
       .catch(err => {
         console.log(err)
@@ -71,6 +71,9 @@ class Notas extends Component {
                 fecha={nota.fecha}
               />
             ) : null
+          }
+          {
+            this.state.none ? <h3>No hay notas para mostrar</h3> : null
           }
           {
             this.state.loadingData ? <Loader2 /> : null

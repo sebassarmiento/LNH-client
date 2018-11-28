@@ -4,6 +4,7 @@ import '../css/loader.css';
 class Loader2 extends Component {
   constructor(props){
     super(props)
+    this.state = {}
   }
   render() {
     return (

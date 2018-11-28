@@ -58,6 +58,12 @@
         height: 100vh;
         background: url('../img/chica.png') no-repeat;
         background-size: 100%;
+        animation: blurBackground 2s;
+    }
+
+    @keyframes blurBackground {
+        0%{filter: blur(10px)}
+        100%{filter: blur(0px)}
     }
 
     .home-presentation-text{

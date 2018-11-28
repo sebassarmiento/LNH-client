@@ -36,11 +36,11 @@ class Notas extends Component {
   handleClick(e) {
     let name = e.target.getAttribute('name')
     this.setState({
-      gastronomia: false,
-      vinos: false,
-      cultura: false,
-      turismo: false,
-      otro: false,
+      gastronomia: null,
+      vinos: null,
+      cultura: null,
+      turismo: null,
+      otro: null,
       [name]: 'current-categoria'
     })
     sessionStorage.setItem('location', `/notas/${[name]}`)
